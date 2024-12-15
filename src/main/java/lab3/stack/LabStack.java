@@ -1,13 +1,6 @@
 package lab3.stack;
 
-/**
- * Класс, представляющий структуру данных "Стек"
- */
 public class LabStack {
-
-    /**
-     * Следующий элемент стека
-     */
     private StackElement next;
 
     /**
@@ -16,7 +9,14 @@ public class LabStack {
      * @param elem элемент, который необходимо поместить в стек
      */
     public void push(String elem) {
-        throw new RuntimeException("implement me");
+        StackElement newElement = new StackElement(elem);
+
+        if (next == null) {
+            next = newElement;
+        } else {
+            newElement.setNext(next);
+            next = newElement;
+        }
     }
 
     /**
@@ -25,6 +25,14 @@ public class LabStack {
      * @return следующий элемент стека
      */
     public String pop() {
-        throw new RuntimeException("implement me");
+        if (next == null) {
+            return null;
+        } else {
+            String retvalue = next.getValue();
+
+            next = next.getNext();
+
+            return retvalue;
+        }
     }
 }
